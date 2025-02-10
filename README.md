@@ -1,64 +1,103 @@
-# Ecommerce-Follow-Along
 
-Project Description
+Milestone 1
+This project will be built using MERN Stack.
+REST API Creation: Through the mentor-guided project, you will learn to build scalable APIs.
+Authentication: You will get to learn to implement secure login and registration functionalities. -Database Schema Design: You will get to explore how to create structured data models using MongoDB.
+Backend Development: As a part of the project, you will learn to set up robust server-side logic with Node.js and Express.
 
-The Ecommerce Follow Along project is designed to help developers build a full-stack e-commerce web application using the MERN stack (MongoDB, Express, React, and Node.js). This project follows a hands-on approach, where you will learn and implement key concepts such as user authentication, product management, and order handling through RESTful APIs. By the end of the project, you will have built a functioning e-commerce platform with core features, using JavaScript across both the client and server side.
+Milestone 2
+Project Folder Structure: Learn to organize your project files into separate frontend and backend directories.
+React Frontend Setup: Initialize a React application for building the user interface.
+Node.js Backend Setup: Set up a simple Node.js server to prepare for API integration in future milestones.
+Tailwind CSS Configuration: Integrate and configure Tailwind CSS to enable modern, responsive, and utility-based styling.
+Login Page Development: Create the first user interface of your e-commerce application, focusing on both functionality and styling.
 
-The MERN stack allows for a seamless and efficient development process, providing a unified language (JavaScript) for the entire stack, making it easier for developers to build, scale, and maintain web applications.
+Milestone 3
+Setting up backend folders and files.
+Configuring and connecting the server to MongoDB.
+Writing basic error-handling code.
 
-**Milestone 1: **
+Milestone 4
+1. What’s a Model?
+A model is like a detailed map or plan.
+When you create a User Model, you’re designing how a user’s data (like name, email, and password) will look in the database. Imagine drawing a blueprint of a house.
+The model is the map of what information you need to store for each user.
+In MongoDB, we use something called Schemas to create a model.
+A schema is a definition of what data should look like for that model.
+2. What’s a Controller?
+A controller is a special part of the server that decides what happens when someone interacts with your app.
+For example, if someone wants to sign up for your website, the controller will handle what happens when the data is sent to the server.
+Think of the controller as a "manager" of requests and responses. It’s like the teacher in a classroom—telling the students (your app) what to do and ensuring everything goes smoothly.
+3. File Uploads with Multer
+Sometimes, your users might want to upload files like profile pictures.
+To help with this, we use Multer, which is a tool that makes it easy to upload files to your server.
+Multer will help us store user images in the backend and keep track of them. It's like a virtual file cabinet for storing pictures!
 
-Project Overview
-In this milestone, we introduced the foundations of building a full-stack e-commerce application using the MERN stack. Key topics covered include:
+Milestone 5
+1. What’s a Sign-Up page?
+The Sign-Up page is where users can enter their details to create an account. This page will typically include fields like:
+Name
+Email
+Password
+This page allows users to provide their information, which will be sent to the server for processing.
+We’ll create a simple yet effective sign-up form that looks clean and is user-friendly.
+2. What is Form validation?
+Form Validation ensures that the information users provide is correct and in the right format.
+For instance, we’ll check if the email is in the correct format and if the password meets certain security criteria (e.g., minimum length).
+Form validation helps prevent errors and ensures that the backend receives clean and valid data.
 
-1. Overview of the MERN Stack
-The MERN stack is a popular set of technologies used for building modern, scalable, and fast web applications. The stack consists of:
-MongoDB (database)
-Express.js (backend framework)
-React.js (frontend library)
-Node.js (JavaScript runtime)
-The key advantage of MERN is its JavaScript-only approach, where both the front-end and back-end are built using JavaScript, making development easier and more efficient.
-2. REST API Structure and Endpoints
-We explored REST APIs (Representational State Transfer) and their role in allowing communication between the client and server.
-Key API endpoints were introduced to handle:
-User Authentication: Register and log in users with secure authentication.
-Product Management: Add, update, and retrieve product data.
-Order Handling: Manage customer orders from creation to checkout.
-These APIs interact with the database, responding with data in JSON format.
-3. Basics of Database Schema Design
-In MongoDB, schema design involves defining the structure of data stored in the database, including relationships between different collections such as users, products, and orders.
-The schema plays a critical role in ensuring data consistency and making it easier to query.
-4. Role of Authentication in Web Applications
-Authentication verifies the identity of a user before granting access to certain features or data.
-In this project, we focused on building secure authentication mechanisms, allowing users to register, log in, and manage their orders.
-We implemented techniques like JWT (JSON Web Tokens) to securely handle user sessions.
-Features Implemented
-User Authentication:
+Milestone 6
+Why encrypting passwords?
+Protect User Data: Keeps passwords safe if hackers access the database.
+Privacy: Ensures user passwords aren’t visible to anyone.
+Compliance: Follows security laws like GDPR and PCI-DSS.
+Stops Password Theft: Encrypted passwords can’t be easily stolen or guessed.
 
-Sign up and login features using JWT for secure sessions.
-Product Management:
+Milestone 7
+User Enters Credentials:
+The user provides their email/username and password on the login page.
+Fetch User Data from Database:
+The backend retrieves the user record based on the provided email/username.
+If the user is not found, return an error: "User does not exist."
+Compare Encrypted Passwords:
+Process the user's input password using the same hashing algorithm (e.g., bcrypt).
+Compare the resulting hash to the stored hashed password.
+If they match, the user is authenticated; if not, send an error.
 
-Add, update, and view products within the e-commerce platform.
-Order Management:
+Milestone 8
+Showcase Products Effectively: Presents product details in a clear and visually appealing way.
+Reusable Design: Can be used across multiple pages or sections of the app.
+Improved User Experience: Makes it easy for users to browse and interact with products.
+Organized Layout: Keeps the homepage clean and structured.
+Create a Dynamic Component: Design a single card component that accepts product details as props.
+Use Mapping: Use array mapping to iterate over the product list and render a card for each product.
+Pass Data Dynamically: Pass unique product information (e.g., name, price, image) to each card.
+Maintain Consistency: Ensure the layout remains uniform for all products.
 
-Create, update, and view customer orders.
+Milestone 9: Creating the Product Form
+Data Management:
+Configured state management to handle form inputs efficiently.
+Validated user inputs before submission to ensure accurate product data.
 
-**Milestone 2: Project Setup and Login Page**
+# Milestone 10: Creating the Product Schema and API Endpoint
 
+In this milestone, we focused on defining the structure of product data and creating an API endpoint to store product details in MongoDB.
 
-In this milestone, we focused on setting up the initial front-end structure and implementing the login page for the application. Key achievements include:
+1. Product Schema Definition:
+Defined a structured product schema using Mongoose to store product data in MongoDB.
+Ensured each field has proper validations to maintain data integrity:
 
-Front-End Framework:
-Set up the React framework with Vite for a fast and modern development experience.
-Folder Structure:
-Organized the src folder to include separate directories for components, pages, and assets to improve scalability and maintainability.
-Login Page Implementation:
-Developed a basic login page (Login.jsx) that includes a user interface for email and password input.
-Incorporated validation logic to ensure proper user input.
-Routing:
-Implemented React Router for navigation and created routes for the login and signup pages.
-Styling:
-Added basic styling using CSS (App.css) to ensure a clean and user-friendly design.
-Git Integration:
-Added the new files to version control and committed progress to the GitHub repository.
-This milestone lays the groundwork for creating the front-end interface and interaction logic for the application.
+Name: Required, string
+Description: Required, string
+Price: Required, number, with validation for non-negative values
+Image URL(s): Required, array of strings for multiple image storage
+Category: Required, string
+CreatedAt: Automatically generated timestamp
+2. Endpoint Creation:
+Developed a POST endpoint (/api/products) to accept product details from the frontend.
+
+Implemented validation to ensure only correctly formatted data is stored in the database.
+Saved product information to MongoDB using Mongoose models.
+3. Data Validation & Integrity:
+Enforced strict validation to prevent invalid or incomplete product entries.
+Returned appropriate error messages for missing or incorrect data inputs
