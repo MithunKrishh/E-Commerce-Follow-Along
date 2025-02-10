@@ -1,11 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 Milestone 1
 This project will be built using MERN Stack.
@@ -81,3 +73,31 @@ Create a Dynamic Component: Design a single card component that accepts product 
 Use Mapping: Use array mapping to iterate over the product list and render a card for each product.
 Pass Data Dynamically: Pass unique product information (e.g., name, price, image) to each card.
 Maintain Consistency: Ensure the layout remains uniform for all products.
+
+Milestone 9: Creating the Product Form
+Data Management:
+Configured state management to handle form inputs efficiently.
+Validated user inputs before submission to ensure accurate product data.
+
+# Milestone 10: Creating the Product Schema and API Endpoint
+
+In this milestone, we focused on defining the structure of product data and creating an API endpoint to store product details in MongoDB.
+
+1. Product Schema Definition:
+Defined a structured product schema using Mongoose to store product data in MongoDB.
+Ensured each field has proper validation to maintain data integrity:
+
+Name: Required, string
+Description: Required, string
+Price: Required, number, with validation for non-negative values
+Image URL(s): Required, array of strings for multiple image storage
+Category: Required, string
+CreatedAt: Automatically generated timestamp
+2. Endpoint Creation:
+Developed a POST endpoint (/api/products) to accept product details from the frontend.
+
+Implemented validation to ensure only correctly formatted data is stored in the database.
+Saved product information to MongoDB using Mongoose models.
+3. Data Validation & Integrity:
+Enforced strict validation to prevent invalid or incomplete product entries.
+Returned appropriate error messages for missing or incorrect data inputs
