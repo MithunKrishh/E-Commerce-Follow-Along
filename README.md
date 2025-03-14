@@ -374,3 +374,65 @@ State Management and API Integration
 Fetched user data from the backend API The final product will have the following features:
 A user can view their profile page
 A user can view their user data on the profile page
+
+# Milestone 21: Implementing the Address Form Page
+Learning Goals 🎯
+By the end of this milestone, you will:
+
+Create a frontend form to collect user address details.
+Store address information using state management.
+Implement navigation from the Profile Page to the Address Form.
+1. Frontend Updates: Address Form Page
+Designed an address input form to collect:
+Country
+City
+Address Line 1
+Address Line 2
+ZIP Code
+Address Type (Home/Work/Other)
+Created a state to store and manage the form input.
+Ensured proper form validation for required fields.
+2. Navigation & User Flow
+Clicking "Add Address" on the Profile Page redirects to the Address Form.
+Implemented smooth navigation handling to improve user experience.
+3. Future Enhancements & Experimentation
+Save Address to Database: Store the address using a backend API.
+Auto-fill Option: Enable users to update an existing address instead of entering a new one.
+Google Maps API Integration: Allow users to select their address using a map.
+
+# Milestone 22: Storing User Address in Database
+
+Created a backend endpoint to receive and store user address data.
+Update the User collection to include an address array.
+Learn how to store and manage multiple addresses for a user.
+1. Backend Updates: Address Storage Endpoint
+Created a POST endpoint (/api/user/address) to receive address data from the frontend.
+Validated the received address data before storing it in the database.
+Updated the User model to include an address array for storing multiple addresses.
+Implemented error handling to ensure data integrity.
+2. Frontend Integration
+Modified the Address Form to send a POST request to the new backend endpoint.
+Ensured proper state management to handle form input.
+Provided user feedback (e.g., success message) upon successful address submission.
+
+# Milestone 23: Implementing Order Placement and Address Selection
+Learning Goals 🎯
+By the end of this milestone, you will:
+
+Add a "Place Order" button inside the cart page.
+Create a Select Address Page where users can choose a delivery address.
+Write a Mongoose schema to store order details in the database.
+1. Frontend Updates: Cart Page & Address Selection
+Added a "Place Order" button inside the cart page.
+When clicked, it navigates to the Select Address Page.
+Displayed all saved addresses for the user.
+Allowed users to select an address for order delivery.
+2. Backend Updates: Order Schema & Storage
+Created a Mongoose schema to store order details, including:
+User ID (to associate orders with users)
+Product details (items in the cart)
+Selected delivery address
+Order status (pending, shipped, delivered)
+Total price
+Timestamp
+Implemented an endpoint to store orders in the database.

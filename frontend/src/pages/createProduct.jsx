@@ -1,14 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
-import Nav from "../components/nav";
-const CreateProduct = () => {
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const isEdit = Boolean(id);
 
+
+const CreateProduct = () => {
     const [images, setImages] = useState([]);
     const [previewImages, setPreviewImages] = useState([]);
     const [name, setName] = useState("");
@@ -19,6 +15,7 @@ const CreateProduct = () => {
     const [stock, setStock] = useState("");
     const [email, setEmail] = useState("");
 
+
     const categoriesData = [
         { title: "Electronics" },
         { title: "Fashion" },
@@ -26,40 +23,24 @@ const CreateProduct = () => {
         { title: "Home Appliances" },
     ];
 
-    useEffect(() => {
-        if (isEdit) {
-            axios
-                .get(`http://localhost:8000/api/v2/product/${id}`)
-                .then((response) => {
-                    const p = response.data.product;
-                    setName(p.name);
-                    setDescription(p.description);
-                    setCategory(p.category);
-                    setTags(p.tags || "");
-                    setPrice(p.price);
-                    setStock(p.stock);
-                    setEmail(p.email);
-                    if (p.images && p.images.length > 0) {
-                        setPreviewImages(
-                            p.images.map((imgPath) => `http://localhost:8000${imgPath}`)
-                        );
-                    }
-                })
-                .catch((err) => {
-                    console.error("Error fetching product:", err);
-                });
-        }
-    }, [id, isEdit]);
 
     const handleImagesChange = (e) => {
         const files = Array.from(e.target.files);
+
+
         setImages((prevImages) => prevImages.concat(files));
+
+
         const imagePreviews = files.map((file) => URL.createObjectURL(file));
         setPreviewImages((prevPreviews) => prevPreviews.concat(imagePreviews));
     };
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Hi")
+
+
         const formData = new FormData();
         formData.append("name", name);
         formData.append("description", description);
@@ -69,57 +50,44 @@ const CreateProduct = () => {
         formData.append("stock", stock);
         formData.append("email", email);
 
+
         images.forEach((image) => {
             formData.append("images", image);
         });
 
+
         try {
-            if (isEdit) {
-                const response = await axios.put(
-                    `http://localhost:8000/api/v2/product/update-product/${id}`,
-                    formData,
-                    {
-                        headers: { "Content-Type": "multipart/form-data" },
-                    }
-                );
-                if (response.status === 200) {
-                    alert("Product updated successfully!");
-                    navigate("/my-products");
-                }
-            } else {
-                const response = await axios.post(
-                    "http://localhost:8000/api/v2/product/create-product",
-                    formData,
-                    {
-                        headers: { "Content-Type": "multipart/form-data" },
-                    }
-                );
-                if (response.status === 201) {
-                    alert("Product created successfully!");
-                    setImages([]);
-                    setPreviewImages([]);
-                    setName("");
-                    setDescription("");
-                    setCategory("");
-                    setTags("");
-                    setPrice("");
-                    setStock("");
-                    setEmail("");
-                }
+            const response = await axios.post("http://localhost:8000/api/v2/product/create-product", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+
+
+            if (response.status === 201) {
+                alert("Product created successfully!");
+                setImages([]);
+                setPreviewImages([]);
+                setName("");
+                setDescription("");
+                setCategory("");
+                setTags("");
+                setPrice("");
+                setStock("");
+                setEmail("");
             }
         } catch (err) {
-            console.error("Error creating/updating product:", err);
-            alert("Failed to save product. Please check the data and try again.");
+            console.error("Error creating product:", err);
+            alert("Failed to create product. Please check the data and try again.");
         }
     };
 
+
+
+
     return (
-        <>
-      <Nav/>
         <div className="w-[90%] max-w-[500px] bg-white shadow h-auto rounded-[4px] p-4 mx-auto">
-            <h5 className="text-[24px] font-semibold text-center">
-                {isEdit ? "Edit Product" : "Create Product"}
-            </h5>
+            <h5 className="text-[24px] font-semibold text-center">Create Product</h5>
             <form onSubmit={handleSubmit}>
                 <div className="mt-4">
                     <label className="pb-1 block">
@@ -216,8 +184,7 @@ const CreateProduct = () => {
                 </div>
                 <div className="mt-4">
                     <label className="pb-1 block">
-                        {isEdit ? "Upload New Images (optional)" : "Upload Images"}{" "}
-                        <span className={isEdit ? "" : "text-red-500"}>*</span>
+                        Upload Images <span className="text-red-500">*</span>
                     </label>
                     <input
                         name="image"
@@ -226,7 +193,7 @@ const CreateProduct = () => {
                         className="hidden"
                         multiple
                         onChange={handleImagesChange}
-                        required={!isEdit}
+                        required
                     />
                     <label htmlFor="upload" className="cursor-pointer">
                         <AiOutlinePlusCircle size={30} color="#555" />
@@ -246,12 +213,12 @@ const CreateProduct = () => {
                     type="submit"
                     className="w-full mt-4 bg-blue-500 text-white p-2 rounded"
                 >
-                    {isEdit ? "Save Changes" : "Create"}
+                    Create
                 </button>
             </form>
         </div>
-        </>
     );
 };
+
 
 export default CreateProduct;

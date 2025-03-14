@@ -1,6 +1,11 @@
+
+
+
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 
 const userSchema = new mongoose.Schema({
   name:{
@@ -56,22 +61,6 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
  },
- cart: [
-  {
-    productId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      min: [1, "Quantity cannot be less than 1"],
-      default: 1,
-    },
-  },
-],
-
  createdAt:{
   type: Date,
   default: Date.now(),
@@ -81,14 +70,18 @@ const userSchema = new mongoose.Schema({
 });
 
 
+
+
 //  Hash password
 userSchema.pre("save", async function (next){
   if(!this.isModified("password")){
     next();
   }
 
+
   this.password = await bcrypt.hash(this.password, 10);
 });
+
 
 // jwt token
 userSchema.methods.getJwtToken = function () {
@@ -97,9 +90,12 @@ userSchema.methods.getJwtToken = function () {
   });
 };
 
+
 // compare password
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
+
 module.exports = mongoose.model("User", userSchema);
+

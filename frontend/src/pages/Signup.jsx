@@ -49,12 +49,10 @@ const Signup = () => {
     };
 //axios request
     axios.post("http://localhost:8000/api/v2/user/create-user", newForm, config).then((res)=>{
-      console.log("resul",res.data);
+      console.log(res.data);
     }).catch((err)=>{
-      console.log("error",err.message);
+      console.log(err);
     })
-
-    
 };
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -202,4 +200,3 @@ const Signup = () => {
   );
 };
 export default Signup;
-
