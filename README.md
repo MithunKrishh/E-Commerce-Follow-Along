@@ -488,3 +488,21 @@ Display all the user orders
 We will add my-orders page in navbar for better navigation.
 
 Created a My Orders page that sends a GET request to the my-orders endpoint created in the previous milestone. The user's email is sent to the endpoint to retrieve all their orders, which are then displayed on the page. Additionally, added the My Orders page to the navbar for improved navigation.
+
+# Milestone 28: Cancel Order Feature for my Orders page
+In the My Orders page, each order will display a Cancel Order button. If the order has already been canceled, the button will not be displayed. This feature includes an API endpoint that allows users to cancel an order by updating its status in the database.
+Implementation Details
+Frontend Changes
+Display Cancel Button:
+Show the Cancel Order button for each order only if its status is not "canceled".
+Hide the button for orders that are already canceled.
+Handle Button Click:
+When the user clicks Cancel Order, send a request to the backend API with the orderId.
+Backend Changes
+Create a Cancel Order API Endpoint
+Method: PUT
+Route: /api/orders/cancel/:orderId
+Functionality:
+Retrieve the order by orderId.
+Update its status to "canceled".
+Save the updated order.
